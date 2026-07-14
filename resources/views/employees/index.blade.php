@@ -11,10 +11,29 @@
 
             <div class="bg-white shadow rounded-lg p-6">
 
+                @if(session('success'))
+                    <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4">
+                        {{ session('success') }}
+                    </div>
+                @endif
+
                 <div class="flex justify-between items-center mb-5">
 
                     <h1 class="text-2xl font-bold">
                         Employee List
+
+                        <form method="GET" action="{{ route('employees.index') }}" class="mb-4">
+
+                            <input type="text" name="search" value="{{ request('search') }}"
+                                placeholder="Search employee..." class="border rounded p-2 w-72">
+
+                            <button class="bg-blue-600 text-white px-4 py-2 rounded">
+
+                                Search
+
+                            </button>
+
+                        </form>
                     </h1>
 
                     <a href="{{ route('employees.create') }}">
@@ -28,15 +47,14 @@
                     <table class="w-full border">
 
                         <thead class="bg-gray-100">
-
                             <tr>
                                 <th class="border p-3">Code</th>
                                 <th class="border p-3">Name</th>
                                 <th class="border p-3">Department</th>
                                 <th class="border p-3">Position</th>
                                 <th class="border p-3">Status</th>
+                                <th class="border p-3">Action</th>
                             </tr>
-
                         </thead>
 
                         <tbody>
@@ -55,6 +73,32 @@
 
                                     <td class="border p-3">{{ $employee->status }}</td>
 
+                                    <td class="border p-3">
+
+                                        <div class="flex gap-3">
+
+                                            <a href="{{ route('employees.edit', $employee->id) }}" class="text-blue-600">
+                                                Edit
+                                            </a>
+
+                                            <form action="{{ route('employees.destroy', $employee->id) }}" method="POST">
+
+                                                @csrf
+                                                @method('DELETE')
+
+                                                <button type="submit" class="text-red-600"
+                                                    onclick="return confirm('Are you sure you want to delete this employee?')">
+
+                                                    Delete
+
+                                                </button>
+
+                                            </form>
+
+                                        </div>
+
+                                    </td>
+
                                 </tr>
 
                             @endforeach
@@ -62,6 +106,10 @@
                         </tbody>
 
                     </table>
+
+                    <div class="mt-6">
+                        {{ $employees->links() }}
+                    </div>
 
                 @else
 
