@@ -22,16 +22,30 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        //
+        return view('employees.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        //
-    }
+{
+    $validated = $request->validate([
+        'employee_code' => 'required|unique:employees',
+        'full_name' => 'required',
+        'email' => 'nullable|email',
+        'phone' => 'nullable',
+        'department' => 'required',
+        'position' => 'required',
+        'status' => 'required',
+    ]);
+
+    Employee::create($validated);
+
+    return redirect()
+        ->route('employees.index')
+        ->with('success', 'Employee added successfully.');
+}
 
     /**
      * Display the specified resource.

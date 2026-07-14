@@ -12,21 +12,18 @@ return new class extends Migration
     public function up(): void
 {
     Schema::create('employees', function (Blueprint $table) {
-        $table->id();
-        $table->string('employee_code')->unique();
-        $table->string('photo')->nullable();
-        $table->string('full_name');
-        $table->string('email')->unique();
-        $table->string('phone');
-        $table->enum('gender', ['Male', 'Female']);
-        $table->date('birth_date');
-        $table->string('department');
-        $table->string('position');
-        $table->decimal('salary', 12, 2)->nullable();
-        $table->text('address')->nullable();
-        $table->enum('status', ['Active', 'Inactive'])->default('Active');
-        $table->timestamps();
-    });
+    $table->id();
+
+    $table->string('employee_code')->unique();
+    $table->string('full_name');
+    $table->string('email')->nullable();
+    $table->string('phone')->nullable();
+    $table->string('department');
+    $table->string('position');
+    $table->enum('status', ['Active', 'Inactive'])->default('Active');
+
+    $table->timestamps();
+});
 }
 
     /**
