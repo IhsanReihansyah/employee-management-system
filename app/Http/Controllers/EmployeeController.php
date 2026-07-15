@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Department;
 use App\Models\Employee;
 use Illuminate\Http\Request;
 
@@ -14,27 +15,31 @@ class EmployeeController extends Controller
     {
         $search = $request->search;
 
-        $employees = Employee::when($search, function ($query) use ($search) {
+        $employees = Employee::with('department')
+            ->when($search, function ($query) use ($search) {
 
-            $query->where('employee_code', 'like', "%{$search}%")
-                ->orWhere('full_name', 'like', "%{$search}%")
-                ->orWhere('department', 'like', "%{$search}%")
-                ->orWhere('position', 'like', "%{$search}%");
+                $query->where('employee_code', 'like', "%{$search}%")
+                    ->orWhere('full_name', 'like', "%{$search}%")
+                    ->orWhere('position', 'like', "%{$search}%")
+                    ->orWhereHas('department', function ($q) use ($search) {
+                        $q->where('department_name', 'like', "%{$search}%");
+                    });
 
-        })
+            })
             ->latest()
             ->paginate(5)
             ->withQueryString();
 
         return view('employees.index', compact('employees', 'search'));
     }
-
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        return view('employees.create');
+        $departments = Department::orderBy('department_name')->get();
+
+        return view('employees.create', compact('departments'));
     }
 
     /**
@@ -47,7 +52,7 @@ class EmployeeController extends Controller
             'full_name' => 'required',
             'email' => 'nullable|email',
             'phone' => 'nullable',
-            'department' => 'required',
+            'department_id' => 'required|exists:departments,id',
             'position' => 'required',
             'status' => 'required',
         ]);

@@ -50,7 +50,21 @@
 
                     <div class="mb-4">
                         <label>Department</label><br>
-                        <input type="text" name="department" class="border rounded w-full p-2">
+                        <select name="department_id" class="border rounded w-full p-2">
+
+                            <option value="">-- Select Department --</option>
+
+                            @foreach($departments as $department)
+
+                                <option value="{{ $department->id }}" {{ old('department_id') == $department->id ? 'selected' : '' }}>
+
+                                    {{ $department->department_name }}
+
+                                </option>
+
+                            @endforeach
+
+                        </select>
                     </div>
 
                     <div class="mb-4">

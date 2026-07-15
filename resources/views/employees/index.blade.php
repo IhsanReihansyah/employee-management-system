@@ -67,7 +67,7 @@
 
                                     <td class="border p-3">{{ $employee->full_name }}</td>
 
-                                    <td class="border p-3">{{ $employee->department }}</td>
+                                    <td class="border p-3">{{ $employee->department->department_name }}</td>
 
                                     <td class="border p-3">{{ $employee->position }}</td>
 
