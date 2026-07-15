@@ -25,7 +25,8 @@
                     </div>
                 @endif
 
-                <form action="{{ route('employees.update', $employee->id) }}" method="POST">
+                <form action="{{ route('employees.update', $employee->id) }}" method="POST"
+                    enctype="multipart/form-data">
 
                     @csrf
                     @method('PUT')
@@ -35,6 +36,18 @@
                         <input type="text" name="employee_code"
                             value="{{ old('employee_code', $employee->employee_code) }}"
                             class="border rounded w-full p-2">
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="block mb-2">Photo</label>
+
+                        <input type="file" name="photo" class="border rounded w-full p-2">
+                        
+                        @if($employee->photo)
+
+                            <img src="{{ asset('storage/' . $employee->photo) }}" width="120" class="rounded">
+
+                        @endif
                     </div>
 
                     <div class="mb-4">

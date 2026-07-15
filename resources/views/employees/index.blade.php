@@ -77,6 +77,10 @@
 
                                         <div class="flex gap-3">
 
+                                            <a href="{{ route('employees.show', $employee->id) }}" class="text-blue-600">
+                                                View
+                                            </a>
+
                                             <a href="{{ route('employees.edit', $employee->id) }}" class="text-blue-600">
                                                 Edit
                                             </a>

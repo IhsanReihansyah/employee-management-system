@@ -12,9 +12,11 @@ class Employee extends Model
 
     protected $fillable = [
         'employee_code',
+        'photo' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
         'full_name',
         'email',
         'phone',
+        'photo',
         'department_id',
         'position',
         'status',

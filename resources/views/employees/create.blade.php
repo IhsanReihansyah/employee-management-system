@@ -25,12 +25,18 @@
                     </div>
                 @endif
 
-                <form action="{{ route('employees.store') }}" method="POST">
+                <form action="{{ route('employees.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
 
                     <div class="mb-4">
                         <label>Employee Code</label><br>
                         <input type="text" name="employee_code" class="border rounded w-full p-2">
+                    </div>
+
+                    <div class="mb-4">
+                        <label>Photo</label>
+
+                        <input type="file" name="photo" class="border rounded w-full p-2">
                     </div>
 
                     <div class="mb-4">

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Storage;
 use App\Models\Department;
 use App\Models\Employee;
 use Illuminate\Http\Request;
@@ -57,6 +58,14 @@ class EmployeeController extends Controller
             'status' => 'required',
         ]);
 
+        if ($request->hasFile('photo')) {
+
+            $validated['photo'] = $request
+                ->file('photo')
+                ->store('employees', 'public');
+
+        }
+
         Employee::create($validated);
 
         return redirect()
@@ -69,7 +78,7 @@ class EmployeeController extends Controller
      */
     public function show(Employee $employee)
     {
-        //
+        return view('employees.show', compact('employee'));
     }
 
     /**
@@ -87,6 +96,7 @@ class EmployeeController extends Controller
     {
         $validated = $request->validate([
             'employee_code' => 'required|unique:employees,employee_code,' . $employee->id,
+            'photo' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
             'full_name' => 'required',
             'email' => 'nullable|email',
             'phone' => 'nullable',
@@ -94,6 +104,23 @@ class EmployeeController extends Controller
             'position' => 'required',
             'status' => 'required',
         ]);
+
+        if ($request->hasFile('photo')) {
+
+            if (
+                $employee->photo &&
+                Storage::disk('public')->exists($employee->photo)
+            ) {
+
+                Storage::disk('public')->delete($employee->photo);
+
+            }
+
+            $validated['photo'] = $request
+                ->file('photo')
+                ->store('employees', 'public');
+
+        }
 
         $employee->update($validated);
 
