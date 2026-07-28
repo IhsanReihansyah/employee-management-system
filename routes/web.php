@@ -11,6 +11,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/employees/export/pdf', [EmployeeController::class, 'exportPdf'])
+    ->name('employees.export.pdf');
+
 Route::get('/dashboard', [DashboardController::class, 'index'])
     ->middleware(['auth', 'verified'])
     ->name('dashboard');

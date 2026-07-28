@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Models\Department;
 use App\Models\Employee;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class EmployeeController extends Controller
 {
@@ -140,4 +141,13 @@ class EmployeeController extends Controller
             ->route('employees.index')
             ->with('success', 'Employee deleted successfully.');
     }
+
+    public function exportPdf()
+{
+    $employees = Employee::with('department')->get();
+
+    $pdf = Pdf::loadView('employees.pdf', compact('employees'));
+
+    return $pdf->download('employee-report.pdf');
+}
 }
