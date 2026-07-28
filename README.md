@@ -70,7 +70,7 @@ git clone https://github.com/IhsanReihansyah/employee-management-system.git
 Enter project directory
 
 ```bash
-cd employee-management
+cd employee-management-system
 ```
 
 Install dependencies
