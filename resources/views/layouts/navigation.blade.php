@@ -15,12 +15,23 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('employees.index')" :active="request()->routeIs('employees.*')">
-                        {{ __('Employees') }}
-                    </x-nav-link>
-                    <x-nav-link :href="route('departments.index')" :active="request()->routeIs('departments.*')">
-                        {{ __('Departments') }}
-                    </x-nav-link>
+
+                    @if(auth()->user()->hasAnyRole(['Admin', 'HR']))
+
+                        <x-nav-link :href="route('employees.index')">
+                            Employees
+                        </x-nav-link>
+
+                        <x-nav-link :href="route('departments.index')">
+                            Departments
+                        </x-nav-link>
+
+                        <x-nav-link :href="route('users.index')">
+                            Users
+                        </x-nav-link>
+
+                    @endif
+
                 </div>
             </div>
 
