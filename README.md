@@ -137,31 +137,39 @@ admin123
 
 ### Login
 
-> Add screenshot here
+> <img width="1920" height="918" alt="image" src="https://github.com/user-attachments/assets/1e4b8ce3-03df-4355-a727-ad16b5fb6131" />
+
 
 ### Dashboard
 
-> Add screenshot here
+> <img width="1920" height="914" alt="image" src="https://github.com/user-attachments/assets/d838b117-242d-45c0-9510-4ff397d097e6" />
+
+
 
 ### Employee List
 
-> Add screenshot here
+> <img width="1919" height="916" alt="image" src="https://github.com/user-attachments/assets/ce64470f-5117-4840-b1e9-5e05b2248bfa" />
+
 
 ### Employee Profile
 
-> Add screenshot here
+> <img width="1920" height="916" alt="image" src="https://github.com/user-attachments/assets/bfd55e1d-c2ca-4a3a-a819-ea68641534f6" />
+
 
 ### Department Management
 
-> Add screenshot here
+> <img width="1920" height="912" alt="image" src="https://github.com/user-attachments/assets/4215d3e5-dafb-4835-bb58-a9a373c92203" />
+
 
 ### User Management
 
-> Add screenshot here
+> <img width="1920" height="915" alt="image" src="https://github.com/user-attachments/assets/76c17d91-10e4-4d67-8348-82b38a369f09" />
+
 
 ### Export PDF
 
-> Add screenshot here
+> <img width="791" height="605" alt="image" src="https://github.com/user-attachments/assets/d3ebf0a2-7a3a-470d-bd54-a86b01eb1cf7" />
+
 
 ---
 
