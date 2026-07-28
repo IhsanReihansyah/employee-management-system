@@ -188,10 +188,10 @@ admin123
 **Ihsan Reihansyah**
 
 GitHub:
-https://github.com/USERNAME
+https://github.com/IhsanReihansyah
 
 LinkedIn:
-https://linkedin.com/in/USERNAME
+https://linkedin.com/in/ihsanreihansyah/
 
 ---
 
