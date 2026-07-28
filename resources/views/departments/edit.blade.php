@@ -1,56 +1,78 @@
 <x-app-layout>
 
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            Edit Department
-        </h2>
+        <div class="flex items-center justify-between">
+            <div>
+                <h2 class="font-bold text-2xl text-slate-800 tracking-tight">
+                    {{ __('Ubah Data Departemen') }}
+                </h2>
+                <p class="text-xs text-slate-500 mt-1">Perbarui kode identifikasi internal atau nama resmi divisi organisasi.</p>
+            </div>
+            <a href="{{ route('departments.index') }}" class="inline-flex items-center gap-2 text-sm font-semibold text-slate-600 hover:text-blue-600 transition-colors">
+                &larr; Kembali ke Daftar
+            </a>
+        </div>
     </x-slot>
 
-    <div class="py-8">
-        <div class="max-w-4xl mx-auto">
+    <div class="py-8 bg-slate-50 min-h-screen">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
 
-            <div class="bg-white shadow rounded-lg p-6">
-
-                <h1 class="text-2xl font-bold mb-6">
-                    Edit Department
-                </h1>
-
-                @if ($errors->any())
-                    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>• {{ $error }}</li>
-                            @endforeach
-                        </ul>
+            <!-- 🔔 Kotak Notifikasi Error Validasi -->
+            @if ($errors->any())
+                <div class="bg-rose-50 border border-rose-200 text-rose-700 p-4 rounded-2xl mb-6 shadow-sm">
+                    <div class="flex items-center gap-2 mb-2 font-bold text-sm">
+                        <span>⚠️</span>
+                        <p>Periksa kembali isian formulir Anda:</p>
                     </div>
-                @endif
+                    <ul class="text-xs space-y-1 pl-6 list-disc font-medium text-rose-600">
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
 
-                <form action="{{ route('departments.update', $department->id) }}" method="POST">
+            <!-- 💳 Kontainer Formulir Utama -->
+            <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden">
+                <div class="p-6 border-b border-slate-100 bg-slate-50/50">
+                    <h3 class="text-lg font-bold text-slate-900">Formulir Pembaruan Divisi</h3>
+                    <p class="text-xs text-slate-500 mt-0.5">Pastikan perubahan nama tidak membingungkan koordinasi data karyawan aktif.</p>
+                </div>
 
+                <form action="{{ route('departments.update', $department->id) }}" method="POST" class="p-6 space-y-6">
                     @csrf
                     @method('PUT')
 
-                    <div class="mb-4">
-                        <label>Code</label>
-                        <input type="text" name="department_code"
-                            value="{{ old('department_code', $department->department_code) }}"
-                            class="border rounded w-full p-2">
+                    <!-- 🗂️ Grid Layout 2 Kolom -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+                        <!-- Kode Departemen -->
+                        <div>
+                            <label class="text-sm font-semibold text-slate-700 block mb-1.5">Kode Departemen</label>
+                            <input type="text" name="department_code" value="{{ old('department_code', $department->department_code) }}"
+                                class="block w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-mono text-slate-500 focus:outline-none cursor-not-allowed" readonly title="Kode departemen tidak dapat diubah">
+                        </div>
+
+                        <!-- Nama Departemen -->
+                        <div>
+                            <label class="text-sm font-semibold text-slate-700 block mb-1.5">Nama Departemen / Divisi</label>
+                            <input type="text" name="department_name" value="{{ old('department_name', $department->department_name) }}" placeholder="Contoh: Human Resource Development"
+                                class="block w-full px-4 py-2.5 bg-white border border-slate-200 rounded-xl text-sm placeholder-slate-400 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 shadow-sm transition-all text-slate-900">
+                        </div>
+
                     </div>
 
-                    <div class="mb-4">
-                        <label>Department</label>
-                        <input type="text" name="department_name" value="{{ old('department_name', $department->department_name) }}"
-                            class="border rounded w-full p-2">
+                    <!-- 🔘 Tombol Aksi Simpan Perubahan -->
+                    <div class="flex items-center justify-end gap-3 pt-4 border-t border-slate-100">
+                        <a href="{{ route('departments.index') }}" class="px-5 py-2.5 bg-white hover:bg-slate-50 text-slate-700 font-semibold text-sm rounded-xl border border-slate-200 shadow-sm transition-colors">
+                            Batal
+                        </a>
+                        <button type="submit" class="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm rounded-xl shadow-md shadow-blue-100 transition-all hover:-translate-y-0.5">
+                            Perbarui Departemen
+                        </button>
                     </div>
-
-                    <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-black px-4 py-2 rounded">
-
-                        Update Department
-
-                    </button>
 
                 </form>
-
             </div>
 
         </div>
