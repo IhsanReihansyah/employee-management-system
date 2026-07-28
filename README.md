@@ -64,7 +64,7 @@ employee-management
 Clone repository
 
 ```bash
-git clone https://github.com/USERNAME/employee-management.git
+git clone https://github.com/IhsanReihansyah/employee-management-system.git
 ```
 
 Enter project directory
@@ -120,13 +120,13 @@ Administrator
 Email
 
 ```
-admin@example.com
+admin@gmail.com
 ```
 
 Password
 
 ```
-password
+admin123
 ```
 
 *(Replace with your actual admin credentials.)*
