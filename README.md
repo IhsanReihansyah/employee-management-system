@@ -129,8 +129,6 @@ Password
 admin123
 ```
 
-*(Replace with your actual admin credentials.)*
-
 ---
 
 ## 📷 Screenshots
