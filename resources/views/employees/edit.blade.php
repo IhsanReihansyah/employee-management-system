@@ -42,7 +42,7 @@
                         <label class="block mb-2">Photo</label>
 
                         <input type="file" name="photo" class="border rounded w-full p-2">
-                        
+
                         @if($employee->photo)
 
                             <img src="{{ asset('storage/' . $employee->photo) }}" width="120" class="rounded">
@@ -69,9 +69,23 @@
                     </div>
 
                     <div class="mb-4">
+
                         <label>Department</label>
-                        <input type="text" name="department" value="{{ old('department', $employee->department) }}"
-                            class="border rounded w-full p-2">
+
+                        <select name="department_id" class="border rounded w-full p-2">
+
+                            @foreach($departments as $department)
+
+                                <option value="{{ $department->id }}" {{ old('department_id', $employee->department_id) == $department->id ? 'selected' : '' }}>
+
+                                    {{ $department->department_name }}
+
+                                </option>
+
+                            @endforeach
+
+                        </select>
+
                     </div>
 
                     <div class="mb-4">

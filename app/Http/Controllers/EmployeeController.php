@@ -86,9 +86,14 @@ class EmployeeController extends Controller
      * Show the form for editing the specified resource.
      */
     public function edit(Employee $employee)
-    {
-        return view('employees.edit', compact('employee'));
-    }
+{
+    $departments = Department::all();
+
+    return view('employees.edit', compact(
+        'employee',
+        'departments'
+    ));
+}
 
     /**
      * Update the specified resource in storage.
@@ -101,7 +106,7 @@ class EmployeeController extends Controller
             'full_name' => 'required',
             'email' => 'nullable|email',
             'phone' => 'nullable',
-            'department' => 'required',
+            'department_id' => 'required|exists:departments,id',
             'position' => 'required',
             'status' => 'required',
         ]);
