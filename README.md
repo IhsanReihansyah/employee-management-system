@@ -1,44 +1,192 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Employee Management System
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A modern web-based **Employee Management System** built with **Laravel 13** to manage employees, departments, users, and role-based access control. This project was developed as a portfolio project to demonstrate full-stack Laravel development skills.
 
-# Human Resource Management System (HRMS)
+---
 
-A web-based Human Resource Management System built with Laravel 12.
+## ✨ Features
 
-## Features
+- 🔐 Authentication (Login)
+- 👥 User Management
+- 🛡 Role & Permission Management (Spatie Laravel Permission)
+- 👨‍💼 Employee CRUD
+- 🏢 Department CRUD
+- 🖼 Employee Photo Upload
+- 👤 Employee Profile Page
+- 📄 Export Employee Data to PDF
+- 📊 Dashboard
+- 📱 Responsive Interface
 
-- User Authentication
-- Employee Management
-- Dashboard
-- Department Management (Coming Soon)
-- Position Management (Coming Soon)
-- Attendance (Coming Soon)
-- Leave Request (Coming Soon)
+---
 
-## Tech Stack
+## 🛠 Tech Stack
 
-- Laravel 12
+### Backend
+- Laravel 13
 - PHP 8.3
-- MySQL
+
+### Frontend
 - Blade
 - Tailwind CSS
+- Vite
+- Alpine.js
 
-## Installation
+### Database
+- MySQL
+
+### Packages
+- Spatie Laravel Permission
+- Barryvdh DomPDF
+
+---
+
+## 📂 Project Structure
+
+```
+employee-management
+├── app
+├── bootstrap
+├── config
+├── database
+├── public
+├── resources
+├── routes
+├── storage
+├── tests
+├── composer.json
+└── README.md
+```
+
+---
+
+## ⚙ Installation
+
+Clone repository
+
+```bash
+git clone https://github.com/USERNAME/employee-management.git
+```
+
+Enter project directory
+
+```bash
+cd employee-management
+```
+
+Install dependencies
 
 ```bash
 composer install
-cp .env.example .env
-php artisan key:generate
-php artisan migrate
-php artisan serve
+npm install
 ```
 
-## Author
+Copy environment
+
+```bash
+cp .env.example .env
+```
+
+Generate application key
+
+```bash
+php artisan key:generate
+```
+
+Configure your database in the `.env` file, then run:
+
+```bash
+php artisan migrate --seed
+```
+
+Create storage link
+
+```bash
+php artisan storage:link
+```
+
+Run the application
+
+```bash
+php artisan serve
+npm run dev
+```
+
+---
+
+## 🔑 Demo Login
+
+Administrator
+
+Email
+
+```
+admin@example.com
+```
+
+Password
+
+```
+password
+```
+
+*(Replace with your actual admin credentials.)*
+
+---
+
+## 📷 Screenshots
+
+### Login
+
+> Add screenshot here
+
+### Dashboard
+
+> Add screenshot here
+
+### Employee List
+
+> Add screenshot here
+
+### Employee Profile
+
+> Add screenshot here
+
+### Department Management
+
+> Add screenshot here
+
+### User Management
+
+> Add screenshot here
+
+### Export PDF
+
+> Add screenshot here
+
+---
+
+## 🗄 Database Tables
+
+- users
+- roles
+- permissions
+- departments
+- employees
+
+---
+
+## 👨‍💻 Author
 
 **Ihsan Reihansyah**
+
+GitHub:
+https://github.com/USERNAME
+
+LinkedIn:
+https://linkedin.com/in/USERNAME
+
+---
+
+## 📄 License
+
+This project is created for educational and portfolio purposes.
